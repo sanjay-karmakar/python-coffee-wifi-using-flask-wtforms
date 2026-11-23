@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title%}cafes{% endblock %}
+
+{% block content%}
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1 class="display-4">All Cafes</h1>
+        <table class="table" style="background-color: #333">
+            {% for row in cafes %}
+                <tr>
+                    {% for item in row %}
+                        {% if item[0:4] == 'http': %}
+                            <td><a href="{{ item }}" target="_blank">Map Link</a></td>
+                        {% else: %}
+                            <td>{{ item }}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        <p><a href="{{ url_for('index') }}">Return to index page</a></p>
+    </div>
+</div>
+{% endblock %}
